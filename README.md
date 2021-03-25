@@ -1,5 +1,9 @@
 ## 原生小程序状态框架 mpstore 
 
+[详细文档](https://nwuflame.github.io/mpstore/)	
+
+[文档国内镜像](http://nwuflame.gitee.io/mpstore/)	
+
 ## 简介
 
 小程序工程越来越复杂，数据共享和通信成为开发的一大难题，像Mpvue, Taro, Uni-App等虽然可以使用Vuex/Redux管理状态，但是对于小程序项目是侵入式的，必须要将整个项目接入框架，使用Vue/React语言进行开发。但其实如果我们只想开发微信小程序，完全不需要这些框架。原生小程序无论是开发体验和运行时性能都是要优于框架的。
