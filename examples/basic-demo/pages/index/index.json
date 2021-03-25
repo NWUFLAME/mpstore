@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "To-Do List",
+  "usingComponents": {
+    "list-item": "/components/list-item/index",
+    "tabs": "/components/tabs/tabs"
+  }
+}

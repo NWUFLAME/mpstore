@@ -1,0 +1,17 @@
+.tabs-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center
+}
+.tabs-item.selected {
+  color: lightgreen;
+  border-bottom:2rpx solid lightgreen;
+}
+.tabs-item {
+  flex: 1;
+  color:lightyellow;
+  border-bottom:1rpx solid #e9e9e9;
+}

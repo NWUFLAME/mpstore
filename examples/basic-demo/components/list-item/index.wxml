@@ -1,0 +1,9 @@
+<view class="list-item row">
+  <label  class="checkbox">
+      <checkbox bindtap="toggleFinished" data-key="{{ item.key }}" class="checkbox-text {{ item.finished === true ? 'text-line' : '' }}" value="{{ item.key }}-{{ item.content }}"  checked="{{ item.finished }}" />
+
+    <text class="checkbox-text {{ item.finished === true ? 'text-line' : '' }}"> {{item.content}}</text>
+  </label>
+  
+  <view bindtap="removeItem" data-key="{{ item.key }}" class="list-del">删除</view>
+</view>

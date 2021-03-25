@@ -1,0 +1,29 @@
+<view class="page-index">
+  <view class="user-info">
+    <image bindtap="modifyGlobalName" wx:if="{{$globalState.userInfo.avatarUrl}}" src="{{ $globalState.userInfo.avatarUrl }}" class="user-avatar" mode="widthFix" />
+    <button type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:else>获取用户信息</button>
+    <view class="user-name">hello {{ $globalState.userInfo.nickName }}</view>
+  </view>
+
+  <tabs tabs="{{ tabs }}" currentTabIndex="{{ activeTab }}"
+    bindtabclick="onTabClick" />
+
+  <view class="list-content">
+    <view wx:if="{{ isShowList }}" class="list">
+
+        <block wx:for="{{ dataSource }}" wx:key="key">
+          <list-item item="{{ item }}"     
+          bind:removeItem="removeItem"
+          bind:toggleFinished="toggleFinished"  />
+
+        </block>
+
+    </view>
+    <view class="list-add">
+      <view class="list-input">
+        <input bindinput="bindKeyInput" value="{{ inputValue }}" class="input" placeholder="请输入待办事项" />
+      </view>
+      <view bindtap="addItem" class="list-button">添加任务</view>
+    </view>
+  </view>
+</view>

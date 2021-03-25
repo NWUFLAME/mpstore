@@ -1,0 +1,24 @@
+.list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+ .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  border-top: #ddd solid 2rpx;
+}
+.row:first-child {
+  border-top: none;
+}
+.row .list-del {
+  display: flex;
+  align-items: center;
+}
+ .row .text-line {
+  text-decoration: line-through;
+  color: grey;
+}
