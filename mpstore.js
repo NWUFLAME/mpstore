@@ -1,6 +1,6 @@
 /*!
  *  MPStore v1.0.0 by yulan
- *  Github: https://github.com/Tencent/omi
+ *  Github: https://github.com/NWUFLAME/mpstore
  *  MIT Licensed.
  */
 
@@ -394,8 +394,8 @@ function mpstore(store, option, isGlobal) {
       store.getters && compute(store.getters, this.store, using, this)
       this.setData(using)
 
-      page._omixComponents = page._omixComponents || []
-      page._omixComponents.push(this)
+      page._mpsComponents = page._mpsComponents || []
+      page._mpsComponents.push(this)
       ready && ready.call(this)
     }
     Component(store)
@@ -503,8 +503,8 @@ mpstore.Component = function (store, option) {
       store.getters && compute(store.getters, this.store, using, this)
       this.setData(using)
 
-      page._omixComponents = page._omixComponents || []
-      page._omixComponents.push(this)
+      page._mpsComponents = page._mpsComponents || []
+      page._mpsComponents.push(this)
       ready && ready.call(this)
     }
     Component(store)
@@ -573,8 +573,8 @@ function _update(kv, store, isGlobal) {
     for (let key in globalStore.instances) {
       globalStore.instances[key].forEach(ins => {
         _updateOne(kv, store, ins, isGlobal)
-        if (ins._omixComponents) {
-          ins._omixComponents.forEach(compIns => {
+        if (ins._mpsComponents) {
+          ins._mpsComponents.forEach(compIns => {
             _updateOne(kv, store, compIns, isGlobal)
           })
         }
@@ -620,23 +620,23 @@ function _updateImpl(data, store, ins, isGlobal) {
   if (!wx.nextTick) {
     return _doUpdate(data, store, ins, isGlobal)
   }
-  if (ins._omixDataBuffer === undefined) {
+  if (ins._mpsDataBuffer === undefined) {
     // 数据缓冲区，暂存没有被commit的json diff patch
-    ins._omixDataBuffer = {}
+    ins._mpsDataBuffer = {}
   }
-  Object.assign(ins._omixDataBuffer, data)
+  Object.assign(ins._mpsDataBuffer, data)
   // 借鉴React，利用开关批量更新
-  if (!ins._omixTickScheduled) {
+  if (!ins._mpsTickScheduled) {
     // 更新入队
     wx.nextTick(function () {
-      _doUpdate(ins._omixDataBuffer, store, ins, isGlobal)
+      _doUpdate(ins._mpsDataBuffer, store, ins, isGlobal)
       // 清空缓冲区
-      ins._omixDataBuffer = {}
+      ins._mpsDataBuffer = {}
       // 打开开关
-      ins._omixTickScheduled = false
+      ins._mpsTickScheduled = false
     })
     // 关闭开关
-    ins._omixTickScheduled = true
+    ins._mpsTickScheduled = true
   }
 }
 
